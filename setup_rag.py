@@ -1,7 +1,8 @@
-# --- 雲端 SQLite 版本過舊的修正補丁 ---
-__import__('pysqlite3')
+# --- 雲端 SQLite 版本過舊的修正補丁（僅 Linux 雲端環境套用）---
 import sys
-sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+if sys.platform == "linux":
+    __import__('pysqlite3')
+    sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 # -------------------------------------
 
 import chromadb
